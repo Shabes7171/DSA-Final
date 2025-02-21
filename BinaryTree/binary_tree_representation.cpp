@@ -123,6 +123,18 @@ void buildfromLevelOrder(Node*& root)
     }
   }
 }
+int  numberOfLeafNodes(Node * root)
+{
+  if(root==NULL)
+  {
+    return 0;
+  }
+  if(root->left==NULL && root->right==NULL)
+  {
+     return 1;
+  }
+  return numberOfLeafNodes(root->left)+numberOfLeafNodes(root->right);
+}
 int main()
 {
   Node*root=NULL;
@@ -145,5 +157,8 @@ int main()
  buildfromLevelOrder(root);
  cout<<"printing level order traversal: "<<endl;
  LevelOrderTraversal(root);
+ cout<<"number of leaf nodes: "<<numberOfLeafNodes(root);
+  return 0;
+ 
 }
 // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
